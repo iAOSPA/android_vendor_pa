@@ -29,7 +29,7 @@ ifneq ($(filter pa_amami pa_edison pa_maserasti pa_spyder pa_targa pa_umts_spyde
 endif
 
 # PA HDPI Devices
-ifneq ($(filter pa_galaxysmtd pa_i9082 pa_i9100 pa_i9100g pa_p3100 pa_p3110 pa_serrano3gxx pa_serranoltexx pa_ville,$(TARGET_PRODUCT)),)
+ifneq ($(filter pa_mione_plus pa_galaxysmtd pa_i9082 pa_i9100 pa_i9100g pa_p3100 pa_p3110 pa_serrano3gxx pa_serranoltexx pa_ville,$(TARGET_PRODUCT)),)
     PRODUCT_COPY_FILES += \
         vendor/pa/prebuilt/bootanimation/800x480.zip:system/media/bootanimation.zip
 endif
