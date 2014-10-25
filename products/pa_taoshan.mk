@@ -1,4 +1,4 @@
-# Copyright (C) 2012 ParanoidAndroid Project
+# Copyright (C) 2014 ParanoidAndroid Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,29 +13,30 @@
 # limitations under the License.
 
 # Check for target product
-ifeq (pa_tate,$(TARGET_PRODUCT))
+
+ifeq (pa_taoshan,$(TARGET_PRODUCT))
 
 # OVERLAY_TARGET adds overlay asset source
-OVERLAY_TARGET := pa_tvdpi
+OVERLAY_TARGET := pa_hdpi
 
-# Build paprefs from sources
 PREFS_FROM_SOURCE ?= false
 
-# Include ParanoidAndroid common configuration
+# Inherit telephony common stuff
+$(call inherit-product, vendor/pa/configs/telephony.mk)
+
+# Include AOSPA common configuration
 include vendor/pa/main.mk
 
-# Inherit AOSP device configuration
-$(call inherit-product, device/amazon/tate/full_tate.mk)
+# Inherit device configuration
+$(call inherit-product, device/sony/taoshan/cm.mk)
 
 # Override AOSP build properties
-PRODUCT_NAME := pa_tate
-PRODUCT_DEVICE := tate
-PRODUCT_RELEASE_NAME := KindleFireHD
-PRODUCT_BRAND := google
-PRODUCT_MODEL := Amazon Tate
-PRODUCT_MANUFACTURER := android
-
-# Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=tate TARGET_DEVICE=tate
+PRODUCT_NAME := pa_taoshan
+PRODUCT_DEVICE := taoshan
+PRODUCT_BRAND := sony
+PRODUCT_MANUFACTURER := Sony
+PRODUCT_MODEL := C2105
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=C2105_1272-2267 BUILD_FINGERPRINT="Sony/C2105_1272-2267/C2105:4.2.2/15.3.A.1.14/Android.1014:user/release-keys" \
+PRIVATE_BUILD_DESC="C2105-user 4.2.2 JDQ39 Android.1014 test-keys"
 
 endif

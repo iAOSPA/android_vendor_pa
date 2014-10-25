@@ -1,4 +1,4 @@
-# Copyright (C) 2012 ParanoidAndroid Project
+# Copyright (C) 2014 ParanoidAndroid Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +13,11 @@
 # limitations under the License.
 
 # Check for target product
-ifeq (pa_jemlte,$(TARGET_PRODUCT))
+
+ifeq (pa_condor,$(TARGET_PRODUCT))
 
 # OVERLAY_TARGET adds overlay asset source
-OVERLAY_TARGET := pa_tvdpi
+OVERLAY_TARGET := pa_hdpi
 
 # Build paprefs from sources
 PREFS_FROM_SOURCE ?= false
@@ -24,21 +25,19 @@ PREFS_FROM_SOURCE ?= false
 # Inherit telephony common stuff
 $(call inherit-product, vendor/pa/configs/telephony.mk)
 
-# Include ParanoidAndroid common configuration
+# Include AOSPA common configuration
 include vendor/pa/main.mk
 
-# Inherit AOSP device configuration
-$(call inherit-product, device/amazon/jemlte/full_jemlte.mk)
+# Inherit device configuration
+$(call inherit-product, device/motorola/condor/full_condor.mk)
 
-# Override AOSP build properties
-PRODUCT_NAME := pa_jemlte
-PRODUCT_DEVICE := jemlte
-PRODUCT_RELEASE_NAME := KindleFireHD
-PRODUCT_BRAND := google
-PRODUCT_MODEL := Amazon Jem LTE
-PRODUCT_MANUFACTURER := android
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := condor
+PRODUCT_NAME := pa_condor
+PRODUCT_BRAND := motorola
+PRODUCT_MODEL := condor
+PRODUCT_MANUFACTURER := motorola
 
-# Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=jemlte TARGET_DEVICE=jemlte
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=condor TARGET_DEVICE=condor
 
 endif

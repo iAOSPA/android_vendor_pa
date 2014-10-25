@@ -13,10 +13,8 @@
 # limitations under the License.
 
 # Check for target product
-ifeq (pa_hlte,$(TARGET_PRODUCT))
 
-# Define PA bootanimation size
-PARANOID_BOOTANIMATION_NAME := XHDPI
+ifeq (pa_hlte,$(TARGET_PRODUCT))
 
 # OVERLAY_TARGET adds overlay asset source
 OVERLAY_TARGET := pa_xxhdpi
@@ -31,13 +29,14 @@ $(call inherit-product, vendor/pa/configs/telephony.mk)
 include vendor/pa/main.mk
 
 # Inherit device configuration
-$(call inherit-product, device/samsung/hlte/full_hlte.mk)
+$(call inherit-product, device/samsung/hlte/hlte.mk)
 
-# Override AOSP build properties
-PRODUCT_NAME := pa_hlte
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := hlte
-PRODUCT_BRAND := Samsung
-PRODUCT_MODEL := SM-N9005
-PRODUCT_MANUFACTURER := Samsung
+PRODUCT_NAME := pa_hlte
+PRODUCT_BRAND := samsung
+PRODUCT_MODEL := hlte
+PRODUCT_MANUFACTURER := samsung
+
 endif
 
